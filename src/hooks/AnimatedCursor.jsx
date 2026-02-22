@@ -7,7 +7,7 @@ const IsDevice = (() => {
   
     return {
       info: ua,
-  
+
       Android() {
         return ua.match(/Android/i)
       },
@@ -30,7 +30,7 @@ const IsDevice = (() => {
       OperaMini() {
         return ua.match(/Opera Mini/i)
       },
-  
+
       /**
        * Any Device
        */
