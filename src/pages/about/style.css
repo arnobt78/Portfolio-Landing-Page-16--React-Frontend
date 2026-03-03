@@ -7,6 +7,52 @@
     color: var(--text-color);
 }
 
+/* Work Timeline: card-style list matching dark/light theme and Skills section */
+.work-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.work-timeline__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    border-left: 4px solid var(--text-color-3);
+    color: var(--text-color);
+}
+
+.work-timeline__date {
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    min-width: 3.5rem;
+}
+
+.work-timeline__content {
+    flex: 1;
+}
+
+.work-timeline__title {
+    font-family: 'Marcellus', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    color: var(--text-color);
+}
+
+.work-timeline__where {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    color: var(--text-color);
+}
+
 .t_border {
     border-color: var(--text-color) !important;
 }
