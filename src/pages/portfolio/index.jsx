@@ -1,17 +1,20 @@
-import React from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
 import { dataportfolio, meta } from "../../content_option";
 
+/** Portfolio page: grid of project cards (image, description, link) from content_option.dataportfolio. */
 export const Portfolio = () => {
   return (
     <HelmetProvider>
       <Container className="About-header">
         <Helmet>
           <meta charSet="utf-8" />
-          <title> Portfolio | {meta.title} </title>{" "}
+          <title>Portfolio | {meta.title}</title>
           <meta name="description" content={meta.description} />
+          {meta.keywords && <meta name="keywords" content={meta.keywords} />}
+          {meta.canonicalUrl && <link rel="canonical" href={`${meta.canonicalUrl}/portfolio`} />}
+          {meta.ogImage && <meta property="og:image" content={meta.ogImage} />}
         </Helmet>
         <Row className="mb-5 mt-3 pt-md-3">
           <Col lg="8">

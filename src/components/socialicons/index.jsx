@@ -1,4 +1,3 @@
-import React from "react";
 import "./style.css";
 import {
   FaGithub,
@@ -14,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { socialprofils } from "../../content_option";
 
+/** Maps content_option socialprofils keys to react-icons components; unknown keys use FaCircle. */
 const ICON_MAPPING = {
   default: FaCircle,
   facebook: FaFacebookF,
@@ -27,7 +27,8 @@ const ICON_MAPPING = {
   youtube: FaYoutube
 };
 
-export const Socialicons = (params) => {
+/** Renders a vertical strip of social links from content_option.socialprofils with icons from ICON_MAPPING. */
+export const Socialicons = () => {
   return (
     <div className="stick_follow_icon">
       <ul>

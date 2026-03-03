@@ -1,18 +1,21 @@
-import React from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Typewriter from "typewriter-effect";
 import { introdata, meta } from "../../content_option";
 import { Link } from "react-router-dom";
 
+/** Home page: hero with typewriter, intro text, and CTA buttons. Helmet sets page title and SEO meta from content_option. */
 export const Home = () => {
   return (
     <HelmetProvider>
       <section id="home" className="home">
         <Helmet>
           <meta charSet="utf-8" />
-          <title> {meta.title}</title>
+          <title>{meta.title} | John Doe&apos;s Portfolio</title>
           <meta name="description" content={meta.description} />
+          {meta.keywords && <meta name="keywords" content={meta.keywords} />}
+          {meta.canonicalUrl && <link rel="canonical" href={meta.canonicalUrl} />}
+          {meta.ogImage && <meta property="og:image" content={meta.ogImage} />}
         </Helmet>
         <div className="intro_sec d-block d-lg-flex align-items-center ">
           <div
@@ -23,6 +26,7 @@ export const Home = () => {
             <div className="align-self-center ">
               <div className="intro mx-auto">
                 <h2 className="mb-1x">{introdata.title}</h2>
+                {/* Rotating phrases from content_option.introdata.animated */}
                 <h1 className="fluidz-48 mb-1x">
                   <Typewriter
                     options={{

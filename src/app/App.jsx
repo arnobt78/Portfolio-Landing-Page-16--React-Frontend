@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter as Router,
@@ -10,6 +10,7 @@ import Headermain from "../header";
 import AnimatedCursor  from "../hooks/AnimatedCursor";
 import "./App.css";
 
+/** Scrolls window to top on every route change (needs router location via withRouter). */
 function _ScrollToTop(props) {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -19,6 +20,7 @@ function _ScrollToTop(props) {
 }
 const ScrollToTop = withRouter(_ScrollToTop);
 
+/** Root app: router, animated cursor, scroll-to-top behavior, header, and page routes. */
 export default function App() {
   return (
     <Router basename={import.meta.env.BASE_URL}>

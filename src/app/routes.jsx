@@ -1,5 +1,4 @@
-import React from "react";
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import withRouter from "../hooks/withRouter"
 import { Home } from "../pages/home";
 import { Portfolio } from "../pages/portfolio";
@@ -8,6 +7,7 @@ import { About } from "../pages/about";
 import { Socialicons } from "../components/socialicons";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
+/** Route tree with page transitions. withRouter supplies location so TransitionGroup can key by route. */
 const AnimatedRoutes = withRouter(({ location }) => (
   <TransitionGroup>
     <CSSTransition
@@ -30,6 +30,7 @@ const AnimatedRoutes = withRouter(({ location }) => (
   </TransitionGroup>
 ));
 
+/** Wraps animated routes and the global social icons strip. */
 function AppRoutes() {
   return (
     <div className="s_c">

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./style.css";
 import { VscGrabber, VscClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { logotext ,socialprofils } from "../content_option";
 import Themetoggle from "../components/themetoggle";
 
+/** Fixed header: logo (from content_option), theme toggle, hamburger menu, and slide-out nav with links + footer socials. */
 const Headermain = () => {
+  /** Tracks whether the mobile menu is open; toggling also adds/removes body class to prevent scroll. */
   const [isActive, setActive] = useState("false");
 
   const handleToggle = () => {
@@ -29,6 +31,7 @@ const Headermain = () => {
           </div>
         </div>
 
+        {/* Slide-out menu: visibility controlled by isActive; links close menu on click. */}
         <div className={`site__navigation ${!isActive ? "menu__opend" : ""}`}>
           <div className="bg__menu h-100">
             <div className="menu__wrapper">

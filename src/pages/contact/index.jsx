@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import * as emailjs from "emailjs-com";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -6,7 +6,9 @@ import { meta } from "../../content_option";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { contactConfig } from "../../content_option";
 
+/** Contact page: form (name, email, message) sent via EmailJS; contact info and optional phone from contactConfig. */
 export const ContactUs = () => {
+  /** Form state: fields, loading flag, and alert (message + variant for success/error). */
   const [formData, setFormdata] = useState({
     email: "",
     name: "",
@@ -17,6 +19,7 @@ export const ContactUs = () => {
     variant: "",
   });
 
+  /** Submit: send email via EmailJS with contactConfig IDs; update alert and loading state on success/error. */
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormdata({ loading: true });
@@ -40,7 +43,7 @@ export const ContactUs = () => {
           console.log(result.text);
           setFormdata({
             loading: false,
-            alertmessage: "SUCCESS! ,Thankyou for your messege",
+            alertmessage: "SUCCESS! Thank you for your message.",
             variant: "success",
             show: true,
           });
@@ -48,7 +51,7 @@ export const ContactUs = () => {
         (error) => {
           console.log(error.text);
           setFormdata({
-            alertmessage: `Faild to send!,${error.text}`,
+            alertmessage: `Failed to send: ${error.text}`,
             variant: "danger",
             show: true,
           });
@@ -57,6 +60,7 @@ export const ContactUs = () => {
       );
   };
 
+  /** Controlled inputs: update formData by field name. */
   const handleChange = (e) => {
     setFormdata({
       ...formData,
@@ -71,6 +75,9 @@ export const ContactUs = () => {
           <meta charSet="utf-8" />
           <title>{meta.title} | Contact</title>
           <meta name="description" content={meta.description} />
+          {meta.keywords && <meta name="keywords" content={meta.keywords} />}
+          {meta.canonicalUrl && <link rel="canonical" href={`${meta.canonicalUrl}/contact`} />}
+          {meta.ogImage && <meta property="og:image" content={meta.ogImage} />}
         </Helmet>
         <Row className="mb-5 mt-3 pt-md-3">
           <Col lg="8">
@@ -101,7 +108,7 @@ export const ContactUs = () => {
               </a>
               <br />
               <br />
-              {contactConfig.hasOwnProperty("YOUR_FONE") ? (
+              {Object.prototype.hasOwnProperty.call(contactConfig, "YOUR_FONE") ? (
                 <p>
                   <strong>Phone:</strong> {contactConfig.YOUR_FONE}
                 </p>

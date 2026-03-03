@@ -1,5 +1,6 @@
 import React, {useEffect,useRef,useState,useCallback} from "react"
 
+/** Detects touch/mobile via userAgent; used to disable custom cursor on small or touch devices. */
 const IsDevice = (() => {
     if (typeof navigator == 'undefined') return
   
@@ -47,7 +48,7 @@ const IsDevice = (() => {
     }
   })()
 
-
+/** Subscribes to a DOM event with a stable handler ref so handler identity doesn't re-attach listeners. */
 function useEventListener(eventName, handler, element = document) {
     const savedHandler = useRef()
   
@@ -291,8 +292,8 @@ function CursorCore({
   }
   
   /**
-   * AnimatedCursor
-   * Calls and passes props to CursorCore if not a touch/mobile device.
+   * AnimatedCursor (default export)
+   * Renders CursorCore on desktop; returns empty fragment on touch/mobile so the native cursor is used.
    */
   function AnimatedCursor({
     outerStyle,

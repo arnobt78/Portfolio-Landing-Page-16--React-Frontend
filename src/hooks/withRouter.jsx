@@ -1,5 +1,9 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
+/**
+ * HOC that injects React Router's location, navigate, and params into a component.
+ * Used by App (ScrollToTop) and routes (AnimatedRoutes) so they can react to route changes.
+ */
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
     let location = useLocation();
